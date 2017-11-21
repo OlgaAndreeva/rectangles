@@ -1,0 +1,38 @@
+#include "listmodel.h"
+
+
+void ListModel::exportCSV()
+{
+    /* Create a CSV file of the object and specify the path to the file
+     * Be sure to include a valid path and extension .csv
+     * */
+    QFile csvFile("C:/example/excelExample.csv");
+
+    // Open or create the file if it does not exist
+    if(csvFile.open( QIODevice::WriteOnly ))
+    {
+        // Create a text stream, which will write the data
+        QTextStream textStream( &csvFile );
+        QStringList stringList; // The helper object QSqtringList, which will form a line
+
+        for( int row = 0; row < 4; row++ )
+        {
+            stringList.clear(); // ... each time scraping tstringList
+            /* If you pay attention to the header file,
+             * you can see in the listing the Roles, role model, that only 4
+             * */
+            for( int column = 0; column < 4; column++ )
+            {
+                // Write in stringList each table entry
+                stringList << "test";
+            }
+            /* Then send the entire file stringList by adding text flow dividers
+             * in the form of "" and putting at the end of a line terminator
+             * */
+            textStream << stringList.join( ';' )+"\n";
+        }
+        // Close the file - ready
+        csvFile.close();
+    }
+}
+

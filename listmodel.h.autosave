@@ -1,0 +1,22 @@
+#ifndef LISTMODEL_H
+#define LISTMODEL_H
+
+
+#include <QObject>
+#
+
+
+class ListModel : public QSqlQueryModel
+{
+    Q_OBJECT
+public:
+    explicit ListModel(QObject *parent = 0);
+protected:
+signals:
+private:
+
+public slots:
+    void exportCSV();
+};
+
+#endif // LISTMODEL_H
